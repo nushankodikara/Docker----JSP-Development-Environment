@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    tomcat:
+        image: tomcat:9.0.1-jre8-alpine
+        ports:
+            - "8888:8080"
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./webapp:/usr/local/tomcat/webapps/webapp
+        container_name: tomcat-dev-dev
+        restart: always
+        command: ["catalina.sh", "run"]
